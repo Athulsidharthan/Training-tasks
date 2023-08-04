@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contac Us</title>
+    <link rel="stylesheet" href="contactus.css">
 </head>
 
 <style>
@@ -19,11 +20,11 @@
 
 
 
-<body style="background-color: beige;">
+<body>
     <h1>We'd love to hear from you</h1>
     <h3>If you want to know more about our products, features, pricing or anything at all, we are here to
         answer your questions.</h3><hr>
-
+<div class="form">
     <form action="">
         <label for="fname">Name:</label>
         <input type="text" id="fname" name="fname" placeholder="Enter your Name" required><br>
@@ -39,15 +40,19 @@
         <input type="text" name="fname" style="height: 100px; width: 500px;" required><br><br>
 
         <button type="submit">Send Message</button>
-
-        <p>Our location</p>
-      <iframe src="https://maps.google.com/maps?q=california&t=&z=10&ie=UTF8&iwloc=&output=embed"  style="border:2px solid red;" title="Iframe Example"></iframe>
-
-        <div class="footer">
-            <p>Copyright © 2023, Athul Sidharthan All Rights Reserved</p>
-            <p>Contact information</p>
     
-        </div>
+</div>
+
     </form>
+
+    <div class="map">
+        <p>Our location</p>
+        <iframe src="https://maps.google.com/maps?q=california&t=&z=10&ie=UTF8&iwloc=&output=embed"  style="border:2px solid red;" title="Iframe Example"></iframe>
+    </div>
+
+    <div class="footer">
+        <p>Copyright © 2023, Athul Sidharthan All Rights Reserved</p>
+        <p>Contact information</p>
+    </div>
 </body>
 </html>
