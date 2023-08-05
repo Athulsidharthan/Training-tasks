@@ -6,6 +6,7 @@
     <title>Login</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="login.css">
+    <script src="login.js"></script>  
 </head>
 <body>
     <div class="login-box">
@@ -13,24 +14,33 @@
             <h2>Login Form</h2>
             <div class="input-box">
                 
-                <input type="text" class="form-control" placeholder="Email Address"  required>
+                <input type="text" class="form-control" id="emailid" placeholder="Email Address"  onfocusout="return emailvalid()">
+
+                <div class="icon">
                 <i class="fa-regular fa-envelope"></i>
+                </div>
+                <small></small>
                 
             </div>
             <div class="input-box">
         
-                <input type="password" class="form-control" placeholder="Password" required>
+                <input type="password" class="form-control" id="password" placeholder="Password" onfocusout="return passwordvalid()">
+
+                <div class="icon">
                 <i class="fa-solid fa-lock"></i>
+               </div>
+               <small></small>
+
             </div>
 
             <div class="remember-forgot">
-            <label><input type="checkbox">Remember me</label>
-            <a href="#">Forgot Password?</a>
+                <label><input type="checkbox">Remember me</label>
+                <a href="#">Forgot Password?</a>
             </div>
-            <button type="submit">Login</button>
+            <button type="submit" id="submit" disabled>Login</button>
 
             <div class="register">
-                <p>Not a member? <a href="#"> Register now </a></p>
+                <p>Not a member? <a href="register.html"> Register now </a></p>
 
             </div>
         </form>

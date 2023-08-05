@@ -36,7 +36,7 @@ h2{
     position: relative;
     width: 310px;
     margin: 30px;
-    border-bottom: 2px solid black;
+    
 }
 
 .input-box label{
@@ -47,15 +47,11 @@ h2{
     font-size: 1em;
     color: black;
     pointer-events: none;
-    transition: .5s;
 }
 
-.input-box input:focus~label,
-.input-box input:valid~label {
-    top:5px;
-}
 
-.input-box input{
+
+.form-control{
     width: 100%;
     height: 50px;
     background: transparent;
@@ -71,6 +67,8 @@ h2{
     color:black;
     display: flex;
     justify-content: space-between;
+    margin-left: 20px;
+
 
 }
 
@@ -90,5 +88,31 @@ button {
     color: wheat;
     text-align: center;
     margin: 25px 0 10px;
+    
 }
 
+.icon{
+    position: absolute;
+    margin-left: 287px;
+    margin-top: -38px;
+}
+
+a{
+    text-decoration: none;
+}
+
+.register{
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+smallhidden{
+    visibility: hidden;
+}
+smallshown{
+    display: flex;
+    font-size: 15px;
+    color: red;
+    flex-direction: column;
+    visibility: visible;
+}
