@@ -1,0 +1,155 @@
+create table tblUserDetails
+(
+UserID Varchar(20),FirstName Varchar(25),UserAge int,UserPhone Varchar(25),Lastname Varchar(25),
+);
+
+
+CREATE PROCEDURE SPI_UserInformation
+@UserID varchar(20),
+@FirstName varchar(25),
+@UserAge int,
+@UserPhone varchar(25),
+@Lastname varchar(25)
+AS
+	INSERT INTO tblUserDetails(UserID,FirstName,UserAge,UserPhone,Lastname)
+VALUES(@UserID,@FirstName,@UserAge,@UserPhone,@Lastname);
+GO
+
+Exec SPI_UserInformation @UserID='1',@FirstName='Athul',@UserAge='22',@UserPhone='9539941552',@Lastname='Sidharthan'
+Exec SPI_UserInformation @UserID='2',@FirstName='Anil',@UserAge='12',@UserPhone='9539941552',@Lastname='Sidharthan'
+Exec SPI_UserInformation @UserID='3',@FirstName='Amal',@UserAge='20',@UserPhone='9539941552',@Lastname='Dev'
+Exec SPI_UserInformation @UserID='4',@FirstName='Ajay',@UserAge='25',@UserPhone='9539941552',@Lastname='Krishana'
+
+select * from tblUserDetails;
+
+CREATE PROCEDURE SPU_UserInformation
+@UserID varchar(20),
+@FirstName varchar(25)
+AS
+	UPDATE tblUserDetails SET FirstName = @FirstName WHERE UserID = @UserID;
+GO
+
+Exec SPU_UserInformation @Userid='2',@FirstName='Anil'
+
+select * from tblUserDetails;
+
+CREATE PROCEDURE SPD_UserInformation
+@UserID varchar(20)
+AS
+	DELETE FROM tblUserDetails WHERE UserID = @UserID;
+GO
+
+Exec SPD_UserInformation @UserID='2'
+
+select * from tblUserDetails;
+
+CREATE PROCEDURE SPS_UserInformation
+AS
+BEGIN
+	select * from tblUserDetails;
+END
+
+Exec SPS_UserInformation
+
+create table tblUserAddress
+(
+Userid Varchar(20),Country Varchar(25),City Varchar(25)
+);
+
+CREATE PROCEDURE SPI_UserAddress
+@Userid Varchar(20),
+@Country Varchar(25),
+@City Varchar(25)
+AS
+	INSERT INTO tblUserAddress(Userid,Country,City)
+VALUES(@UserID,@Country,@City);
+GO
+
+Exec SPI_UserAddress @Userid='1',@Country='India',@City='Thrissur'
+
+select * from tblUserAddress;
+
+
+
+//single stored procedure
+
+CREATE PROCEDURE SP_Registration(
+	@type AS varchar(MAX),
+	@UserID AS INT=NULL,
+	@FirstName AS varchar(MAX)=NULL,
+	@UserAge AS INT=NULL,
+	@UserPhone AS INT=NULL,
+	@LastName AS varchar(MAX)=NULL)
+AS
+BEGIN
+	IF @type = 'SP_insert'
+	BEGIN
+		INSERT INTO tblUserDetails
+		VALUES(@UserID,@FirstName,@UserAge,@UserPhone,@LastName);
+	END;
+
+	IF @type = 'SP_update'
+	BEGIN
+		UPDATE tblUserDetails set FirstName = @FirstName,UserAge = @UserAge,UserPhone = @UserPhone,LastName = @LastName where UserID = @UserID;
+	END;
+
+	IF @type = 'SP_select'
+	BEGIN
+		SELECT * FROM tblUserDetails
+	END;
+
+	IF @type = 'SP_delete'
+	BEGIN
+		DELETE FROM tblUserDetails WHERE UserID = @UserID
+	END;
+END;
+
+
+select UserID,FirstName,UserAge,UserPhone,Lastname,Country,City
+from tblUserDetails
+JOIN tblUserAddress
+ON tblUserDetails.Userid = tblUserAddress.UserID;
+
+select * from tblUserAddress;
+select * from tblUserDetails;
+
+select UserID,FirstName,UserAge,UserPhone,Lastname,Country,City
+from tblUserDetails
+INNER JOIN tblUserAddress
+ON tblUserDetails.Userid = tblUserAddress.UserID;
+
+select UserID,FirstName,UserAge,UserPhone,Lastname,Country,City
+from tblUserDetails
+LEFT JOIN tblUserAddress
+ON tblUserDetails.Userid = tblUserAddress.UserID;
+
+select UserID,FirstName,UserAge,UserPhone,Lastname,Country,City
+from tblUserDetails
+LEFT OUTER JOIN tblUserAddress
+ON tblUserDetails.Userid = tblUserAddress.UserID;
+
+select UserID,FirstName,UserAge,UserPhone,Lastname,Country,City
+from tblUserDetails
+RIGHT OUTER JOIN tblUserAddress
+ON tblUserDetails.Userid = tblUserAddress.UserID;
+
+select UserID,FirstName,UserAge,UserPhone,Lastname,Country,City
+from tblUserDetails
+FULL OUTER JOIN tblUserAddress
+ON tblUserDetails.Userid = tblUserAddress.UserID;
+
+select UserID,FirstName,UserAge,UserPhone,Lastname,Country,City
+from tblUserDetails
+CROSS JOIN tblUserAddress
+ON tblUserDetails.Userid = tblUserAddress.UserID;
+
+
+//general formula for joins
+select		columnList
+from		LeftTable
+JoinType	RightTable
+ON
+
+
+
+
